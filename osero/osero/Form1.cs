@@ -425,16 +425,40 @@ namespace osero
         }
         void StartTurn()
         {
+            // ★ 手番開始時にまず合法手チェック
+            if (!HasValidMove(currentPlayer))
+            {
+                toolStripStatusLabel1.Text =
+                    $"{currentPlayer} は置ける場所がないためパスです";
+
+                currentPlayer = NextPlayer(currentPlayer);
+
+                // 終局判定
+                if (CheckGameSet())
+                    return;
+
+                StartTurn(); // 次の人のターン開始
+                return;
+            }
+
+            // 通常のターン開始
             timeLeft = 30;
             turnTimer.Start();
             HighlightValidMoves(currentPlayer);
+
+            toolStripStatusLabel1.Text =
+                $"{currentPlayer} の番です　残り {timeLeft} 秒";
         }
+
         void TimeUp()
         {
+            turnTimer.Stop();
+            // ★ まず終局判定
+            if (CheckGameSet())
+                return;
+
             toolStripStatusLabel1.Text =
                 $"{currentPlayer} は時間切れでパスです";
-
-            turnTimer.Stop();
             currentPlayer = NextPlayer(currentPlayer);
 
             if (currentGameMode == GameMode.人VsAI)
@@ -542,7 +566,10 @@ namespace osero
 
                 // 終局判定
                 if (CheckGameSet())
+                {
+                    turnTimer.Stop();
                     return;
+                }
 
                 // 次の手がない場合、プレイヤーに交代
                 if (HasValidMove(StoneColor.Black))
@@ -654,6 +681,7 @@ namespace osero
             Console.WriteLine("=== OnGameset called ===");
 
             // 終局フラグを止める
+            turnTimer?.Stop();
             isYour = false;
 
             var stones = StonePosition.Cast<Stone>();
