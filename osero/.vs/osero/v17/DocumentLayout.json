@@ -1,0 +1,121 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\keike\\Documents\\Numa-Boad\\osero\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{CEC3011A-0535-4671-9C01-5565B1F986A7}|osero\\osero.csproj|c:\\users\\keike\\documents\\numa-boad\\osero\\osero\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CEC3011A-0535-4671-9C01-5565B1F986A7}|osero\\osero.csproj|solutionrelative:osero\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CEC3011A-0535-4671-9C01-5565B1F986A7}|osero\\osero.csproj|C:\\Users\\keike\\Documents\\Numa-Boad\\osero\\osero\\ai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CEC3011A-0535-4671-9C01-5565B1F986A7}|osero\\osero.csproj|solutionrelative:osero\\ai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CEC3011A-0535-4671-9C01-5565B1F986A7}|osero\\osero.csproj|C:\\Users\\keike\\Documents\\Numa-Boad\\osero\\osero\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CEC3011A-0535-4671-9C01-5565B1F986A7}|osero\\osero.csproj|solutionrelative:osero\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CEC3011A-0535-4671-9C01-5565B1F986A7}|osero\\osero.csproj|C:\\Users\\keike\\Documents\\Numa-Boad\\osero\\osero\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{CEC3011A-0535-4671-9C01-5565B1F986A7}|osero\\osero.csproj|solutionrelative:osero\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CEC3011A-0535-4671-9C01-5565B1F986A7}|osero\\osero.csproj|C:\\Users\\keike\\Documents\\Numa-Boad\\osero\\osero\\stone.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CEC3011A-0535-4671-9C01-5565B1F986A7}|osero\\osero.csproj|solutionrelative:osero\\stone.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CEC3011A-0535-4671-9C01-5565B1F986A7}|osero\\osero.csproj|C:\\Users\\keike\\Documents\\Numa-Boad\\osero\\osero\\stonecolor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CEC3011A-0535-4671-9C01-5565B1F986A7}|osero\\osero.csproj|solutionrelative:osero\\stonecolor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AI.cs",
+              "DocumentMoniker": "C:\\Users\\keike\\Documents\\Numa-Boad\\osero\\osero\\AI.cs",
+              "RelativeDocumentMoniker": "osero\\AI.cs",
+              "ToolTip": "C:\\Users\\keike\\Documents\\Numa-Boad\\osero\\osero\\AI.cs",
+              "RelativeToolTip": "osero\\AI.cs",
+              "ViewState": "AgIAAFIAAAAAAAAAAAAUwCoAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-17T05:08:34.917Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "stoneColor.cs",
+              "DocumentMoniker": "C:\\Users\\keike\\Documents\\Numa-Boad\\osero\\osero\\stoneColor.cs",
+              "RelativeDocumentMoniker": "osero\\stoneColor.cs",
+              "ToolTip": "C:\\Users\\keike\\Documents\\Numa-Boad\\osero\\osero\\stoneColor.cs",
+              "RelativeToolTip": "osero\\stoneColor.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAADwvwwAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-16T13:47:53.181Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "stone.cs",
+              "DocumentMoniker": "C:\\Users\\keike\\Documents\\Numa-Boad\\osero\\osero\\stone.cs",
+              "RelativeDocumentMoniker": "osero\\stone.cs",
+              "ToolTip": "C:\\Users\\keike\\Documents\\Numa-Boad\\osero\\osero\\stone.cs",
+              "RelativeToolTip": "osero\\stone.cs",
+              "ViewState": "AgIAADQAAAAAAAAAAAAgwFkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-05T06:46:09.147Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Users\\keike\\Documents\\Numa-Boad\\osero\\osero\\Form1.cs",
+              "RelativeDocumentMoniker": "osero\\Form1.cs",
+              "ToolTip": "C:\\Users\\keike\\Documents\\Numa-Boad\\osero\\osero\\Form1.cs",
+              "RelativeToolTip": "osero\\Form1.cs",
+              "ViewState": "AgIAAOMAAAAAAAAAAAAqwIEBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-05T06:43:56.259Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Form1.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\keike\\Documents\\Numa-Boad\\osero\\osero\\Form1.Designer.cs",
+              "RelativeDocumentMoniker": "osero\\Form1.Designer.cs",
+              "ToolTip": "C:\\Users\\keike\\Documents\\Numa-Boad\\osero\\osero\\Form1.Designer.cs",
+              "RelativeToolTip": "osero\\Form1.Designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAH8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-05T06:56:19.115Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Form1.cs [\u30C7\u30B6\u30A4\u30F3]",
+              "DocumentMoniker": "C:\\Users\\keike\\Documents\\Numa-Boad\\osero\\osero\\Form1.cs",
+              "RelativeDocumentMoniker": "osero\\Form1.cs",
+              "ToolTip": "C:\\Users\\keike\\Documents\\Numa-Boad\\osero\\osero\\Form1.cs [\u30C7\u30B6\u30A4\u30F3]",
+              "RelativeToolTip": "osero\\Form1.cs [\u30C7\u30B6\u30A4\u30F3]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-05T06:43:21.519Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
