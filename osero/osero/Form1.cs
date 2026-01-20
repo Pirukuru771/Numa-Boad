@@ -19,7 +19,10 @@ namespace osero
         private ToolStripMenuItem playerVsAIMenuItem;
         private ToolStripMenuItem playerVsPlayerMenuItem;
         private ToolStripMenuItem playerVsThreeMenuItem;
-        enum Difficulty
+        private Timer turnTimer;
+        private int timeLeft = 30; // 制限時間（秒）
+
+            enum Difficulty
         {
             優しい, // Easy
             普通,   //Normal
@@ -37,7 +40,7 @@ namespace osero
         // 現在の手番（黒 or 白）
         private StoneColor currentPlayer = StoneColor.Black;
 
-        Difficulty currentDifficulty = Difficulty.鬼; // 今は固定でOK
+        Difficulty currentDifficulty = Difficulty.鬼; // 今は固定
         string GetDifficultyName(Difficulty diff)
         {
             switch (diff)
@@ -100,6 +103,10 @@ namespace osero
             this.playerVsThreeMenuItem.Name = "playerVsThreeMenuItem";
             this.playerVsThreeMenuItem.Text = "プレイヤー vs プレイヤー vs プレイヤー";
             this.playerVsThreeMenuItem.Click += new EventHandler(this.playerVsThreeMenuItem_Click);
+            //タイマー
+            turnTimer = new Timer();
+            turnTimer.Interval = 1000;
+            turnTimer.Tick += TurnTimer_Tick;
 
             // フルスクリーン化
             this.FormBorderStyle = FormBorderStyle.None; // 枠なしにする
@@ -141,6 +148,7 @@ namespace osero
                 statusStrip1.PerformLayout();
             }
         }
+        //おせろの盤面の作成
         private void CreatePictureBoxes()
             {
                 for (int row = 0; row < 8; row++)
@@ -158,6 +166,7 @@ namespace osero
                     }
                 }
             }
+        //esc押すと画面切り替え
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)
@@ -180,6 +189,7 @@ namespace osero
                 }
             }
         }
+        //画面サイズが変わっても盤面が自動で大きさ変える
         private void ResizeBoard()
         {
             int boardWidth = this.ClientSize.Width - 110;  // 左右マージン
@@ -203,6 +213,7 @@ namespace osero
                 }
             }
         }
+        //モード切替
         private void playerVsAIMenuItem_Click(object sender, EventArgs e)
         {
             currentGameMode = GameMode.人VsAI;
@@ -221,11 +232,11 @@ namespace osero
             toolStripStatusLabel1.Text = "モード：三人対戦";
             GameStart();
         }
+        //難易度変更
         private void UpdateDifficultyDisplay()
         {
             toolStripStatusLabel1.Text = $"難易度：{GetDifficultyName(currentDifficulty)}";
 
-            // 色の変更をswitch文で書く
             switch (currentDifficulty)
             {
                 case Difficulty.優しい:
@@ -302,6 +313,8 @@ namespace osero
         {
             //なにかいれてもよし
         }
+
+        //おせろのメイン処理
         private async void Box_PictureBoxExClick(int x, int y)
         {
             // AI戦でプレイヤー以外は操作不可
@@ -339,7 +352,10 @@ namespace osero
                 return;
 
             // 次の手番に切り替え
+            turnTimer.Stop();
             currentPlayer = NextPlayer(currentPlayer);
+            StartTurn();
+
 
             if (currentGameMode == GameMode.人VsAI)
             {
@@ -357,8 +373,6 @@ namespace osero
                 {
                     toolStripStatusLabel1.Text = $"{currentPlayer} の番です";
                 }
-
-
 
                 // パス判定
                 int passCount = 0;
@@ -396,6 +410,56 @@ namespace osero
                 }
             }
         }
+        private void TurnTimer_Tick(object sender, EventArgs e)
+        {
+            timeLeft--;
+
+            toolStripStatusLabel1.Text =
+                $"{currentPlayer} の番です　残り {timeLeft} 秒";
+
+            if (timeLeft <= 0)
+            {
+                turnTimer.Stop();
+                TimeUp();
+            }
+        }
+        void StartTurn()
+        {
+            timeLeft = 30;
+            turnTimer.Start();
+            HighlightValidMoves(currentPlayer);
+        }
+        void TimeUp()
+        {
+            toolStripStatusLabel1.Text =
+                $"{currentPlayer} は時間切れでパスです";
+
+            turnTimer.Stop();
+            currentPlayer = NextPlayer(currentPlayer);
+
+            if (currentGameMode == GameMode.人VsAI)
+            {
+                if (currentPlayer == StoneColor.Black)
+                {
+                    // プレイヤーの番
+                    isYour = true;
+                    StartTurn();
+                }
+                else
+                {
+                    // AI の番
+                    isYour = false;
+                    _ = EnemyThink(); // 非同期でAI開始
+                }
+            }
+            else
+            {
+                // 人対人
+                StartTurn();
+            }
+        }
+
+        //AIの考え
         private async Task EnemyThink()
         {
             var aiColor = StoneColor.White;
@@ -429,6 +493,7 @@ namespace osero
                     }
                 }
 
+                turnTimer.Stop();
                 toolStripStatusLabel1.Text = "コンピュータが考えています…";
                 await Task.Delay(200);
 
@@ -486,6 +551,7 @@ namespace osero
                     isYour = true;
                     HighlightValidMoves(currentPlayer);
                     toolStripStatusLabel1.Text = $"{currentPlayer} の番です";
+                    StartTurn();
                     return;
                 }
 
@@ -538,7 +604,7 @@ namespace osero
 
             return false;
         }
-
+        //難易度ごとの強さ
         Stone ThinkEasy(List<Stone> moves)
         {
             return moves[rng.Next(moves.Count)];
@@ -573,6 +639,7 @@ namespace osero
                     GetReverseStones(s.Colum, s.Row, StoneColor.White).Count)
                 .First();
         }      
+        //ハイライト消す
         void ClearHighlight()
         {
             foreach (var stone in StonePosition)
@@ -581,6 +648,7 @@ namespace osero
                 stone.Invalidate();
             }
         }
+        //ゲーム終わった時の処理
         void OnGameset()
         {
             Console.WriteLine("=== OnGameset called ===");
@@ -633,7 +701,7 @@ namespace osero
             statusStrip1.Invalidate();
             statusStrip1.Update();
         }
-
+        //盤面を仮コピー
         StoneColor[,] CopyBoard()
         {
             var board = new StoneColor[8, 8];
@@ -646,12 +714,14 @@ namespace osero
         {
             throw new NotImplementedException();
         }
+        //置ける場所探索
         List<Stone> GetValidMoves(StoneColor color)
         {
             return StonePosition.Cast<Stone>()
                 .Where(s => s.StoneColor == StoneColor.None && GetReverseStones(s.Colum, s.Row, color).Any())
                 .ToList();
         }
+        //ハイライトの表示
         void HighlightValidMoves(StoneColor color)
         {
             foreach (var stone in StonePosition)
@@ -666,9 +736,7 @@ namespace osero
                 stone.Invalidate();
             }
         }
-        /// <summary>
         /// 次の手番を返す（モードに応じて切り替え）
-        /// </summary>
         private StoneColor NextPlayer(StoneColor current)
         {
             if (currentGameMode == GameMode.人VsAI || currentGameMode == GameMode.人Vs人)
@@ -684,6 +752,7 @@ namespace osero
                 return StoneColor.Black; // Red の次は Black
             }
         }
+        //裏返せる石を探す処理
         List<Stone> GetReverseStones(int x, int y, StoneColor color)
         {
             List<Stone> result = new List<Stone>();
@@ -756,6 +825,11 @@ namespace osero
         }
 
         private void 難易度ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Load_1(object sender, EventArgs e)
         {
 
         }
