@@ -1,0 +1,10 @@
+C:\Users\keike\Documents\Numa-Boad\osero\osero\obj\Debug\osero.csproj.AssemblyReference.cache
+C:\Users\keike\Documents\Numa-Boad\osero\osero\obj\Debug\osero.Form1.resources
+C:\Users\keike\Documents\Numa-Boad\osero\osero\obj\Debug\osero.Properties.Resources.resources
+C:\Users\keike\Documents\Numa-Boad\osero\osero\obj\Debug\osero.csproj.GenerateResource.cache
+C:\Users\keike\Documents\Numa-Boad\osero\osero\obj\Debug\osero.csproj.CoreCompileInputs.cache
+C:\Users\keike\Documents\Numa-Boad\osero\osero\bin\Debug\osero.exe.config
+C:\Users\keike\Documents\Numa-Boad\osero\osero\bin\Debug\osero.exe
+C:\Users\keike\Documents\Numa-Boad\osero\osero\bin\Debug\osero.pdb
+C:\Users\keike\Documents\Numa-Boad\osero\osero\obj\Debug\osero.exe
+C:\Users\keike\Documents\Numa-Boad\osero\osero\obj\Debug\osero.pdb
