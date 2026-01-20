@@ -425,23 +425,26 @@ namespace osero
         }
         void StartTurn()
         {
-            // ★ 手番開始時にまず合法手チェック
-            if (!HasValidMove(currentPlayer))
+            int passCount = 0;
+
+            while (!HasValidMove(currentPlayer))
             {
                 toolStripStatusLabel1.Text =
                     $"{currentPlayer} は置ける場所がないためパスです";
 
                 currentPlayer = NextPlayer(currentPlayer);
+                passCount++;
 
-                // 終局判定
-                if (CheckGameSet())
-                    return;
-
-                StartTurn(); // 次の人のターン開始
-                return;
+                // ★ 終局判定（ここが超重要）
+                if (passCount >= (currentGameMode == GameMode.人Vs人Vs人 ? 3 : 2))
+                {
+                    turnTimer.Stop();   // ★ 念のため
+                    OnGameset();
+                    return;             // ★ ここで完全終了
+                }
             }
 
-            // 通常のターン開始
+            // ★ ここまで来た = 終局していない
             timeLeft = 30;
             turnTimer.Start();
             HighlightValidMoves(currentPlayer);
